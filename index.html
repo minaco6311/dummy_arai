@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>†新井株式会社† Claude Code 徹底攻略塾 - トップページ</title>
+    <style>
+        /* 2000年代初頭の痛いデザインを再現するCSS */
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'MS PGothic', 'ＭＳ Ｐゴシック', 'Osaka', sans-serif;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFElEQVQIW2NkYGD4z8DAwMgAI0AMDA4wBQLwR1QAAAAASUVORK5CYII='); /* 謎のドット背景 */
+            cursor: default;
+        }
+
+        a:link { color: #00FFFF; text-decoration: underline; }
+        a:visited { color: #FF00FF; text-decoration: underline; }
+        a:hover { color: #FF0000; text-decoration: underline; background-color: #FFFF00; }
+        a:active { color: #FF0000; }
+
+        .center { text-align: center; }
+        
+        .title-text {
+            color: #FF0000;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 2px 2px #FFFF00;
+        }
+
+        /* 点滅エフェクト */
+        .blink {
+            animation: blinker 1s linear infinite;
+            color: #FF00FF;
+            font-weight: bold;
+        }
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        /* キリ番カウンター風 */
+        .counter {
+            font-family: 'Courier New', monospace;
+            background-color: #333;
+            color: #00FF00;
+            padding: 5px;
+            border: inset 3px #666;
+            letter-spacing: 3px;
+            font-size: 20px;
+        }
+
+        .content-box {
+            border: 3px ridge #00FFFF;
+            padding: 15px;
+            margin: 20px auto;
+            width: 80%;
+            background-color: #111133;
+        }
+
+        .curriculum-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #00FFFF;
+        }
+        .curriculum-table th, .curriculum-table td {
+            border: 1px solid #00FFFF;
+            padding: 10px;
+            text-align: left;
+        }
+        .curriculum-table th {
+            background-color: #003366;
+            color: #FFFF00;
+        }
+
+        /* マウスストーカー用のパーティクル */
+        .sparkle {
+            position: fixed; /* fixedにしてスクロール時も追従させる */
+            pointer-events: none;
+            color: #00FFFF;
+            font-size: 14px;
+            text-shadow: 0 0 5px #00FFFF, 0 0 10px #FFFFFF;
+            z-index: 9999;
+            animation: sparkle-fade 0.6s linear forwards;
+        }
+        @keyframes sparkle-fade {
+            0% { opacity: 1; transform: scale(1) translateY(0); }
+            100% { opacity: 0; transform: scale(0.3) translateY(30px); }
+        }
+
+        hr {
+            border: none;
+            border-top: 1px dashed #00FFFF;
+            height: 1px;
+            color: #00FFFF;
+            background-color: #00FFFF;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- マウスストーカー（水色のキラキラ）のスクリプト -->
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            // イベントの間引き（重くならないように）
+            if (Math.random() > 0.6) return;
+
+            // パーティクルの量を2倍に増やす
+            for (let i = 0; i < 2; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'sparkle';
+                // 昔流行った「水色のキラキラ」テキスト
+                particle.innerHTML = '✦'; 
+                
+                // カーソル位置の少し周りに散らす
+                const offsetX = (Math.random() - 0.5) * 20;
+                const offsetY = (Math.random() - 0.5) * 20;
+                
+                // fixed配置のためclientX/Yを使用
+                particle.style.left = (e.clientX + offsetX) + 'px';
+                particle.style.top = (e.clientY + offsetY) + 'px';
+                
+                document.body.appendChild(particle);
+
+                // アニメーション終了後に削除
+                setTimeout(() => {
+                    particle.remove();
+                }, 600);
+            }
+        });
+
+        // ページ切り替え用スクリプト（別ページ遷移を再現）
+        function showPricePage() {
+            document.getElementById('main-page').style.display = 'none';
+            document.getElementById('construction-page').style.display = 'none';
+            document.getElementById('price-page').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function showConstructionPage(color) {
+            document.getElementById('main-page').style.display = 'none';
+            document.getElementById('price-page').style.display = 'none';
+            document.getElementById('construction-page').style.display = 'block';
+            
+            // 色を変更
+            document.getElementById('const-tape-top').style.backgroundColor = color;
+            document.getElementById('const-tape-bottom').style.backgroundColor = color;
+            document.getElementById('const-title').setAttribute('color', color);
+
+            window.scrollTo(0, 0);
+        }
+
+        function showMainPage() {
+            document.getElementById('price-page').style.display = 'none';
+            document.getElementById('construction-page').style.display = 'none';
+            document.getElementById('main-page').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+    <div id="main-page">
+        <div class="center">
+            <!-- 無駄なマーキー -->
+            <marquee bgcolor="#000080" behavior="scroll" direction="left" scrollamount="5" width="80%">
+                <font color="#FFFFFF">★☆★ Ｗｅｌｃｏｍｅ ｔｏ ＡＲＡＩ Ｃｏ．， Ｌｔｄ． Ｈｏｍｅｐａｇｅ ★☆★ 最新のＡＩツール「Ｃｌａｕｄｅ Ｃｏｄｅ」で、キミも伝説のハッカーにならないか！？</font>
+            </marquee>
+
+            <br><br>
+            <div style="font-size: 12px; color: #666;">※当サイトはIE6.0以上、解像度800x600以上、文字サイズ「中」を推奨しています。</div>
+            <br>
+
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1" height="1" alt="spacer">
+            <font color="#00FFFF">†*†*†*†*†*†*†*†*†*†*†*†*†*†*†*†*†</font><br>
+            <span class="title-text">新井株式会社 プレゼンツ<br>『Claude Code 徹底攻略塾』</span><br>
+            <font color="#00FFFF">†*†*†*†*†*†*†*†*†*†*†*†*†*†*†*†*†</font>
+            <br><br>
+
+            あなたは <span class="counter">0010485</span> 人目の迷えるエンジニアです...<br>
+            <font size="2">（※キリ番を踏んだ方はBBSのカキコお願いします！）</font>
+            <br><br>
+            <span class="blink">【！ＮＥＷ！】第１期生 募集開始しました！！</span>
+            <br><br>
+        </div>
+
+        <div class="content-box">
+            <div class="center">
+                <font size="5" color="#FFFF00"><b>▼△ ごあいさつ △▼</b></font>
+            </div>
+            <p>
+                「AIにコード書かせるだけでアプリ完成するっしょｗ」<br>
+                ……そう思っていた時期が、俺にもありました。<br>
+                <br>
+                こんにちは。新井株式会社のWebMaster、新井です。<br>
+                最近話題の<strong>「Claude Code」</strong>、みんな使ってる？<br>
+                確かにターミナルからAIを召喚してコードを生成・編集できるのは<b>超・快・感</b>。<br>
+                でも、気づいてしまったんだ。<br>
+                <br>
+                <font color="#FF0000"><b>「環境構築やインフラ、DBの知識がないと、結局動くアプリにならなくね…？」</b></font><br>
+                <br>
+                そう、AIは魔法の杖じゃない。<br>
+                魔法を使うための『魔力（エンジニアの基礎力）』が必要なんだ！！！<br>
+                当スクールでは、Claude Codeという最強の相棒を使いこなし、<br>
+                真のフルスタックアプリを錬成するための<b>【ガチのエンジニアスキル】</b>を叩き込みます。
+            </p>
+        </div>
+
+        <div class="content-box">
+            <div class="center">
+                <font size="5" color="#00FF00"><b>■□ 狂気のカリキュラム □■</b></font><br>
+                <font size="2">（※内容はガチです。覚悟のある者だけスクロールしてください）</font>
+            </div>
+            <br>
+            <table class="curriculum-table">
+                <tr>
+                    <th width="20%">LEVEL.1</th>
+                    <td>
+                        <b>【召喚術】Claude Code 基礎とプロンプト・エンジニアリング</b><br>
+                        まずはターミナルにClaudeを降臨させる。的確な指示（プロンプト）の書き方、コンテキストの渡し方、ファイルの読み書き権限の掌握方法を学ぶ。
+                    </td>
+                </tr>
+                <tr>
+                    <th>LEVEL.2</th>
+                    <td>
+                        <b>【箱庭の創造】Dockerによる絶対不変の開発環境</b><br>
+                        「俺のPCでは動いたのに…」という悲劇を終わらせる。Dockerとdocker-composeを使い、AIが生成したコードを隔離されたコンテナ内で安全に実行・検証する術を身につける。
+                    </td>
+                </tr>
+                <tr>
+                    <th>LEVEL.3</th>
+                    <td>
+                        <b>【魔神の契約】データベース（MySQL）設計と構築</b><br>
+                        アプリの記憶を司るDB。正規化、インデックス、リレーション。Claude Codeに最適なマイグレーションファイルを生成させ、データを支配する。
+                    </td>
+                </tr>
+                <tr>
+                    <th>LEVEL.4</th>
+                    <td>
+                        <b>【漆黒のPHP】Laravel フレームワーク連携</b><br>
+                        AIとの相性抜群なLaravelを駆使する。ルーティング、Eloquent ORMの構築、APIの実装をClaude Codeと共に爆速で組み上げ、堅牢なバックエンドを構築する。
+                    </td>
+                </tr>
+                <tr>
+                    <th>LEVEL.5</th>
+                    <td>
+                        <b>【世界樹との接続】Git / GitHub と CI/CD</b><br>
+                        作ったアプリを世界に放つ。Gitコマンドの基礎から、GitHubへのプッシュ。そしてClaude Codeが生成したコードをレビューし、自動デプロイするまでのDevOpsを網羅。
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <div class="center">
+                <font color="#FFCC00">
+                    ただAIに頼るだけの「コピペ野郎」はもう終わりだ。<br>
+                    Laravel、Docker、DB、GitHub。<br>
+                    これらを理解した上でClaude Codeを操る者だけが、次の時代を創る。
+                </font>
+            </div>
+        </div>
+
+        <div class="center">
+            <hr width="80%">
+            <br>
+            <table border="1" bordercolor="#666666" cellpadding="10" bgcolor="#222222" style="margin: 0 auto;">
+                <tr>
+                    <td>
+                        <font size="4"><b>受講料： おたのしみ <a href="javascript:void(0);" onclick="showPricePage()" class="blink" style="text-decoration: none;">ここをクリック</a> </b></font><br>
+                        <font size="2">※支払いは銀行振込のみ対応。</font>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <a href="mailto:info@example.com">
+                <font size="5" color="#FF0000"><b>＞＞ 入塾の申し込み（Mail）はこちら ＜＜</b></font>
+            </a>
+            <br><br>
+            <hr width="80%">
+        </div>
+
+        <div class="center">
+            <font size="3"><b>▼ MAIN MENU ▼</b></font><br>
+            [ <a href="#">トップページ</a> ] 
+            [ <a href="javascript:void(0);" onclick="showConstructionPage('#00FF00')">管理人プロフィール</a> ] 
+            [ <a href="javascript:void(0);" onclick="showConstructionPage('#FF00FF')" title="荒らし厳禁！">★ＢＢＳ（掲示板）★</a> ] 
+            [ <a href="javascript:void(0);" onclick="showConstructionPage('#FFA500')">リンク集</a> ]
+            <br><br>
+
+            <!-- 謎のAA -->
+            <pre style="font-size: 12px; line-height: 1.1; color: #888;">
+　 　 　 ＿＿＿_
+　 　 ／　　 　 　＼
+　 ／　　─　 　 ─＼
+／ 　　 （●） 　（●） ＼　＜ Claude Code最高だお！
+|　 　　 　 （__人__）　 　 |　　 でもDockerのエラーは自分で直すお！
+＼　　　　 ｀ ⌒´　　 ／
+            </pre>
+
+            <br>
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="88" height="31" alt="相互リンク募集中" style="border: 1px solid #FFF; background-color: #333;"><br>
+            <font size="1">当サイトはリンクフリーです。バナーは直リンク禁止でお持ち帰りください。</font>
+            <br><br>
+            <font size="2" color="#666666">Copyright (C) 2001-2026 新井株式会社 All Rights Reserved.<br>
+            無断転載・複製を固く禁じます。</font>
+        </div>
+    </div> <!-- main-page end -->
+
+    <!-- 別ページ風コンテンツ（授業料発表ページ） -->
+    <div id="price-page" style="display: none; text-align: center; padding-top: 150px; height: 100vh;">
+        <font color="#00FFFF">†*†*†*†*†*†*†*†*†*†*†*†*†*†*†*†*†*†*†</font><br><br>
+        
+        <font size="6" color="#FF0000"><b>授業料は面接時にお知らせします。。。</b></font><br><br>
+        
+        <font color="#00FFFF">†*†*†*†*†*†*†*†*†*†*†*†*†*†*†*†*†*†*†</font><br><br>
+        <br><br><br>
+        <a href="javascript:void(0);" onclick="showMainPage()">[ ＜＜ 恐怖のトップページへ戻る ]</a>
+    </div>
+
+    <!-- 別ページ風コンテンツ（工事中ページ） -->
+    <div id="construction-page" style="display: none; text-align: center; padding-top: 100px; height: 100vh;">
+        <div id="const-tape-top" style="background-color: #FFFF00; color: #000000; font-weight: bold; padding: 10px; font-size: 24px; border: 3px dashed #000;">
+            ／／／／／ UNDER CONSTRUCTION ／／／／／
+        </div>
+        <br><br>
+        <font id="const-title" size="6" color="#FFFF00" class="blink"><b>只今工事中！</b></font><br><br>
+        <pre style="font-size: 16px; line-height: 1.2; color: #FFF; display: inline-block; text-align: left;">
+      _＿
+    / ||
+   /  ||  
+  /   ||   
+ /_＿||_＿  
+   |  _  |
+   | o_o |  ＜ 鋭意作成中につき、もうしばらくお待ち下さい。
+   |_____|
+  _|     |_
+        </pre>
+        <br><br><br>
+        <div id="const-tape-bottom" style="background-color: #FFFF00; color: #000000; font-weight: bold; padding: 10px; font-size: 24px; border: 3px dashed #000;">
+            ／／／／／ UNDER CONSTRUCTION ／／／／／
+        </div>
+        <br><br>
+        <a href="javascript:void(0);" onclick="showMainPage()">[ ＜＜ トップページへ戻る ]</a>
+    </div>
+
+</body>
+</html>
